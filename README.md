@@ -17,7 +17,7 @@ After assembling it looks like this:
 # Example realisation for MX5 NBFL
 ![mx5_nbfl](https://github.com/ahryniewicz/EMUSerialDisplay/assets/27493069/198ce48b-f850-4c7f-9770-4d03bdd32399)
 
-# Would you like to support me
+# Would you like to support me ?
 If you find my project useful, consider support me on:
 
 https://buycoffee.to/adamhryniewicz
