@@ -140,6 +140,16 @@ volatile int enc_val = 0;
 volatile boolean button_pressed;
 int last_enc_state;
 
+#if (USE_BUZZER_FOR_ALARM)
+int buzzerPin = 2;
+hw_timer_t *Timer0_Cfg = NULL;
+
+void IRAM_ATTR Timer0_ISR()
+{
+    digitalWrite(buzzerPin, !digitalRead(buzzerPin));
+}
+#endif
+
 void button_handler(){
   Serial.println("Button pressed handler");
   button_pressed = true;
@@ -188,6 +198,12 @@ void setup(void)
   display[2].p_info = &emu_data[DispalySets[ActiveDisplaySet][2]];
   display_init();
 
+#if (USE_BUZZER_FOR_ALARM)
+  pinMode(buzzerPin, OUTPUT);
+  Timer0_Cfg = timerBegin(0, 80000, true);
+  timerAttachInterrupt(Timer0_Cfg, &Timer0_ISR, true);
+  timerAlarmWrite(Timer0_Cfg, 500, true);
+#endif
 }
 
 void loop()
@@ -264,6 +280,17 @@ void loop()
    sAFR_TARGET = String(emu.emu_data.afrTarget,2);
 #endif
 /* ====================== /Read EMU data ======================= */
+
+#if (USE_BUZZER_FOR_ALARM)
+/* ====================== Buzzer alarm ========================= */
+if (emu_data[OP].error || emu_data[OT].error || emu_data[CLT].error)
+  timerAlarmEnable(Timer0_Cfg);
+else {
+  timerAlarmDisable(Timer0_Cfg);
+  digitalWrite(buzzerPin, LOW);
+}
+/* ====================== /Buzzer alarm ======================== */
+#endif
 
 /* ====================== Update display ======================= */
   if (button_pressed) {
