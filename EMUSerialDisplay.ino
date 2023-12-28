@@ -166,7 +166,7 @@ void setup(void)
   Serial.begin(115200); //Debugging
 
   /* EMU init*/
-	Serial1.begin(19200, SERIAL_8N1, 19, 21); //EMU Serial setup, 8 Data Bits 1 Stopbit, RX Pin, TX Pin
+	Serial1.begin(19200, SERIAL_8N1, 19, -1); //EMU Serial setup, 8 Data Bits 1 Stopbit, RX Pin, TX Pin
 
   /* Encoder&PushButton init */
   pinMode(encoderPinA, INPUT);
