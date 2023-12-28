@@ -180,8 +180,8 @@ void setup(void)
   button_pressed = false;
 
   /* Display init */
-  displayMAP.p_info = &emu_data[MAP];
-  displayAFR.p_info = &emu_data[AFR];
+  displayUp.p_info = &emu_data[MAP];
+  displayDown.p_info = &emu_data[AFR];
   ActiveDisplaySet = 0;
   display[0].p_info = &emu_data[DispalySets[ActiveDisplaySet][0]];
   display[1].p_info = &emu_data[DispalySets[ActiveDisplaySet][1]];

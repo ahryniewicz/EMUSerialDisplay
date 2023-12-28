@@ -22,8 +22,8 @@ typedef struct {
   display_info_t *p_info;
 } display_t;
 
-extern display_t displayMAP;
-extern display_t displayAFR;
+extern display_t displayUp;
+extern display_t displayDown;
 extern display_t display[3];
 
 void display_init(void);
