@@ -2,4 +2,4 @@
 #Example 1:1,5,7 <-- Channel 1,5,7 are the only ones left
 #Example 2:tps,map <-- tps and map only are left, use lowercase only!
 #But dont mix names and channels!
-map,wboafr,oilpressure,oiltemperature,clt,wbolambda,lambdatarget,iat
+#map,wboafr,oilpressure,oiltemperature,clt,wbolambda,lambdatarget,iat

@@ -14,8 +14,14 @@ String sTPS;
 #if (USE_IAT_PARAMETER)
 String sIAT;
 #endif
+#if (USE_BATT_PARAMETER)
+String sBATT,
+#endif
 #if (USE_IGN_ANGLE_PARAMETER)
 String sIGN_ANGLE;
+#endif
+#if (USE_EGT_PARAMETER)
+String sEGT,
 #endif
 #if (USE_KNOCK_LEVEL_PARAMETER)
 String sKNOCK_LEVEL;
@@ -41,6 +47,12 @@ String sLAMBDA_TARGET;
 #if (USE_AFR_TARGET_PARAMETER)
 String sAFR_TARGET;
 #endif
+#if (USE_AFR_TARGET_PARAMETER)
+String sAFR_TARGET;
+#endif
+#if (USE_CEL_PARAMETER)
+String sCEL;
+#endif
 
 typedef enum {
   MAP,
@@ -54,8 +66,14 @@ typedef enum {
 #if (USE_IAT_PARAMETER)
   IAT,
 #endif
+#if (USE_BATT_PARAMETER)
+  BATT,
+#endif
 #if (USE_IGN_ANGLE_PARAMETER)
   IGN_ANGLE,
+#endif
+#if (USE_EGT_PARAMETER)
+  EGT,
 #endif
 #if (USE_KNOCK_LEVEL_PARAMETER)
   KNOCK_LEVEL,
@@ -81,6 +99,9 @@ typedef enum {
 #if (USE_AFR_TARGET_PARAMETER)
   AFR_TARGET,
 #endif
+#if (USE_CEL_PARAMETER)
+  CEL,
+#endif
   EMU_PARAMS_NUM
 }emu_param_t;
 EMUSerial emu(Serial1,Serial);
@@ -99,8 +120,14 @@ display_info_t emu_data[EMU_PARAMS_NUM] = {
 #if (USE_IAT_PARAMETER)
   [IAT]={"IAT",&sIAT},
 #endif
+#if (USE_BATT_PARAMETER)
+  [BATT]={"BATT",&sBATT},
+#endif
 #if (USE_IGN_ANGLE_PARAMETER)
   [IGN_ANGLE]={"IGN_ANGLE",&sIGN_ANGLE},
+#endif
+#if (USE_EGT_PARAMETER)
+  [EGT]={"EGT",&sEGT},
 #endif
 #if (USE_KNOCK_LEVEL_PARAMETER)
   [KNOCK_LEVEL]={"KNOCK_LEVEL",&sKNOCK_LEVEL},
@@ -124,7 +151,10 @@ display_info_t emu_data[EMU_PARAMS_NUM] = {
   [LAMBDA_TARGET]={"L_T",&sLAMBDA_TARGET},
 #endif
 #if (USE_AFR_TARGET_PARAMETER)
-  [AFR_TARGET]={"AFR_TARGET",&sAFR_TARGET}
+  [AFR_TARGET]={"AFR_TARGET",&sAFR_TARGET},
+#endif
+#if (USE_CEL_PARAMETER)
+  [CEL]={"CEL",&sCEL},
 #endif
 };
 int DispalySets[NUMBER_OF_DISPLAY_SETS][3] = DISPLAY_SETS;
@@ -226,8 +256,16 @@ void loop()
   sIAT = String(emu.emu_data.IAT);
 #endif
 
+#if (USE_BATT_PARAMETER)
+  sBATT = String(emu.emu_data.Batt,1);
+#endif
+
 #if (USE_IGN_ANGLE_PARAMETER)
    sIGN_ANGLE = String(emu.emu_data.IgnAngle,1);
+#endif
+
+#if (USE_EGT_PARAMETER)
+  sEGT = String(emu.emu_data.Egt1);
 #endif
 
 #if (USE_KNOCK_LEVEL_PARAMETER)
@@ -278,6 +316,10 @@ void loop()
 
 #if (USE_AFR_TARGET_PARAMETER)
    sAFR_TARGET = String(emu.emu_data.afrTarget,2);
+#endif
+
+#if (USE_CEL_PARAMETER)
+  sCEL = String(emu.emu_data.cel);
 #endif
 /* ====================== /Read EMU data ======================= */
 
