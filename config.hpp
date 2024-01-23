@@ -4,8 +4,11 @@
 #define USE_BUZZER_FOR_ALARM            0
 
 #define USE_IAT_PARAMETER               1
+#define USE_EGT_PARAMETER               1
+#define USE_BATT_PARAMETER              1
 #define USE_LAMBDA_PARAMETER            1
 #define USE_LAMBDA_TARGET_PARAMETER     1
+#define USE_CEL_PARAMETER               1
 #define USE_AFR_TARGET_PARAMETER        0
 #define USE_KNOCK_LEVEL_PARAMETER       0
 #define USE_RPM_PARAMETER               0
