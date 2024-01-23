@@ -203,6 +203,7 @@ void encoder_handler(){
 
 void setup(void)
 {
+  delay(500);
   Serial.begin(115200); //Debugging
 
   /* EMU init*/
